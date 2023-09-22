@@ -18,7 +18,7 @@
                 <p class="lead">
                     La página que estás buscando no existe.
                   </p>
-                <a href="/servlet" class="btn btn-primary">Volver</a>
+                <a href="/servlet-crud" class="btn btn-primary">Volver</a>
             </div>
         </div>
     </body>
