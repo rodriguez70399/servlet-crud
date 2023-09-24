@@ -1,4 +1,6 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.List" %>
+<%@ page import="es.jmruirod.servletcrud.model.Employee" %>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -21,7 +23,7 @@
                         <a class="nav-link active" aria-current="page" href="/servlet-crud">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="create-employee.jsp">Contratar Empleado</a>
+                        <a class="nav-link" href="add-employee.jsp">Contratar Empleado</a>
                     </li>
                 </ul>
             </div>
@@ -30,10 +32,51 @@
 
     <main class="container">
 
-        <div class="row  justify-content-center mt-5">
+        <div class="row justify-content-center mt-5">
             
             <div class="col-auto">
-                <h2>Inicio</h2>
+                
+            <%
+                List<Employee> employeeList = (List<Employee>) request.getAttribute("employeeList");
+                
+                if(employeeList.size() > 0)
+                {
+                    
+            %>
+                    <h2>Listado de empleados</h2>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Salario Base</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">${employee.employeeId()}</th>
+                                <td>${employee.name}</td>
+                                <td>${employee.baseSalary}</td>
+                                <td>${employee.position}</td>
+                                <td>
+                                    <a href="#" class="btn btn-primary" role="button" aria-disabled="true">Modificar</a>
+                                    <a href="#" class="btn btn-danger" role="button" aria-disabled="true">Despedir</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            <%
+                }
+                else
+                {
+            %>
+                    <h2>No se encuentra ningun empleado</h2> 
+            <%
+                }
+            %>      
+
             </div>
             
         </div>

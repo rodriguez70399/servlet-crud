@@ -1,5 +1,7 @@
 package es.jmruirod.servletcrud.model;
 
+import jakarta.persistence.Entity;
+
 /**
  * Clase Developer que representa a un desarrollador en la empresa.
  * 
@@ -10,6 +12,7 @@ package es.jmruirod.servletcrud.model;
  * @see Employee
  * @see Taskable
  */
+@Entity
 public class Developer extends Employee implements Taskable
 {
     private String principalLanguage;
@@ -25,6 +28,19 @@ public class Developer extends Employee implements Taskable
     public Developer(int employeeId, String name, double baseSalary, String principalLanguaje) 
     {
         super(employeeId, name, PositionsNames.DEVELOPER, baseSalary);
+        this.principalLanguage = principalLanguaje;
+    }
+
+    /**
+     * Constructor de la clase Developer.
+     *
+     * @param name             El nombre del desarrollador.
+     * @param baseSalary       El salario base del desarrollador.
+     * @param principalLanguage El lenguaje de programación principal utilizado por el desarrollador.
+     */
+    public Developer(String name, double baseSalary, String principalLanguaje) 
+    {
+        super(name, PositionsNames.DEVELOPER, baseSalary);
         this.principalLanguage = principalLanguaje;
     }
 

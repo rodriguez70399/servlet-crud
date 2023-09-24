@@ -1,5 +1,10 @@
 package es.jmruirod.servletcrud.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
 /**
  * Clase abstracta Employee que representa a un empleado genérico en la empresa.
  * 
@@ -12,8 +17,11 @@ package es.jmruirod.servletcrud.model;
  * @see Designer
  * @see ProjectManager
  */
+@Entity
 public abstract class Employee 
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int employeeId;
     private String name;
     private String position;
@@ -33,6 +41,20 @@ public abstract class Employee
     public Employee(int employeeId, String name, String position, double baseSalary) 
     {
         this.employeeId = employeeId;
+        this.name = name;
+        this.position = position;
+        this.baseSalary = baseSalary;
+    }
+
+    /**
+     * Constructor de la clase Employee.
+     *
+     * @param name       El nombre del empleado.
+     * @param position   El puesto del empleado.
+     * @param baseSalary El salario base del empleado.
+     */
+    public Employee(String name, String position, double baseSalary) 
+    {
         this.name = name;
         this.position = position;
         this.baseSalary = baseSalary;

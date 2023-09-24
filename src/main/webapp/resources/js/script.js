@@ -3,6 +3,11 @@ let extraDataContainer = document.getElementById("extraDataContainer");
 let inputType = "";
 let inputText = "";
 let inputName = "";
+let defaultInput = `
+            <div class="mb-3">
+                <label for="language" class="form-label">Lenguaje de programación</label>
+                <input type="text" class="form-control" id="language" name="language" autocomplete="off">
+            </div>`;
 
 positionSelect.addEventListener("change", function()
 {
@@ -43,3 +48,5 @@ positionSelect.addEventListener("change", function()
 
     extraDataContainer.insertAdjacentHTML("beforeend", input);
 })
+
+extraDataContainer.insertAdjacentHTML("beforeend", defaultInput);

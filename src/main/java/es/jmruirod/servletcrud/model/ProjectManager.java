@@ -1,5 +1,7 @@
 package es.jmruirod.servletcrud.model;
 
+import jakarta.persistence.Entity;
+
 /**
  * Clase ProjectManager que representa a un jefe de proyecto en la empresa.
  * 
@@ -10,6 +12,7 @@ package es.jmruirod.servletcrud.model;
  * @see Employee
  * @see Superiorable
  */
+@Entity
 public class ProjectManager extends Employee implements Superiorable
 {
     private int assignedProjects;
@@ -27,6 +30,21 @@ public class ProjectManager extends Employee implements Superiorable
     public ProjectManager(int employeeId, String name, double baseSalary, int assignedProjects) 
     {
         super(employeeId, name, PositionsNames.PROJECT_MANAGER, baseSalary);
+        this.assignedProjects = assignedProjects;
+        this.isMeeting = false;
+        this.startMeetingTime = 0l;
+    }
+
+    /**
+     * Constructor de la clase ProjectManager.
+     *
+     * @param name             El nombre del jefe de proyecto.
+     * @param baseSalary       El salario base del jefe de proyecto.
+     * @param assignedProjects El número de proyectos asignados al jefe de proyecto.
+     */
+    public ProjectManager(String name, double baseSalary, int assignedProjects) 
+    {
+        super(name, PositionsNames.PROJECT_MANAGER, baseSalary);
         this.assignedProjects = assignedProjects;
         this.isMeeting = false;
         this.startMeetingTime = 0l;

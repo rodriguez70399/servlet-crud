@@ -1,5 +1,7 @@
 package es.jmruirod.servletcrud.model;
 
+import jakarta.persistence.Entity;
+
 /**
  * Clase Designer que representa a un diseñador en la empresa.
  * 
@@ -10,6 +12,7 @@ package es.jmruirod.servletcrud.model;
  * @see Employee
  * @see Taskable
  */
+@Entity
 public class Designer extends Employee implements Taskable
 {
     private String principalDesignTool;
@@ -25,6 +28,19 @@ public class Designer extends Employee implements Taskable
     public Designer(int employeeId, String name, double baseSalary, String principalDesignTool)
     {
         super(employeeId, name, PositionsNames.DESIGNER, baseSalary);
+        this.principalDesignTool = principalDesignTool;
+    }
+
+    /**
+     * Constructor de la clase Designer.
+     *
+     * @param name                El nombre del diseñador.
+     * @param baseSalary          El salario base del diseñador.
+     * @param principalDesignTool La herramienta de diseño principal utilizada por el diseñador.
+     */
+    public Designer(String name, double baseSalary, String principalDesignTool)
+    {
+        super(name, PositionsNames.DESIGNER, baseSalary);
         this.principalDesignTool = principalDesignTool;
     }
 
